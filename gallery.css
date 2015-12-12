@@ -5,8 +5,9 @@
 
 html{
     font:14px;
+    font-family: Helvetica;
     color: #000000;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 body{
@@ -15,7 +16,6 @@ body{
 
 h1{
     font-size: 24px;
-    font-family: Helvetica;
     color: #000000;
     padding: 50px 0 50px 0;
     text-transform: uppercase;
@@ -32,6 +32,30 @@ img {
 }
 
 .pictures {
-    padding: 100px 60px;
+    padding: 40px 60px;
     background-color: #e6f3f7;
 }
+
+@media only screen and (min-width: 320px) {
+    .load-more {
+        width: 50%;
+        padding: 20px;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        border: solid 1px #ffffff;
+        background: #000000;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .load-more {
+        width: 25%;
+    }
+}
+
+
