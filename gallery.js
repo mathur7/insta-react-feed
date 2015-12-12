@@ -17,40 +17,45 @@ var Gallery = React.createClass({
 	},
 
 	componentDidMount: function(){
-			var self = this;
-			var url = 'https://api.instagram.com/v1/tags/nofilter/media/recent?client_id=' + this.props.apiKey + '&callback=?';
+			this.getData();
+	},
 
-			function getData() {
-				$.getJSON(url, function(response){
-					if(!response.data.length ){
-							return;
-					}
-
-					var pictures = response.data.map(function(p){
-						return { 
-							id: p.id, 
-							src: p.images.low_resolution.url
-						};
-					});
-					self.setState({ 
-						pictures: pictures
-					});
-				});
+	getData: function() {
+		console.log("shit");
+		var self = this;
+		var url = 'https://api.instagram.com/v1/tags/nofilter/media/recent?client_id=' + this.props.apiKey + '&callback=?';
+		$.getJSON(url, function(response){
+			if(!response.data.length ){
+				return;
 			}
 
-			getData();
+			var pictures = response.data.map(function(p){
+				return { 
+					id: p.id, 
+					src: p.images.low_resolution.url
+				};
+			});
+			self.setState({ 
+				pictures: pictures
+			});
+			url = response.pagination.next_url;
+		});
 	},
 
 	render: function() {
 		var self = this;
 		var pictures = this.state.pictures.map(function(p){
-			return <Picture ref={p.id} src={p.src} title={p.title}/>
+			return <Picture src={p.src}/>
 		});
 
 		return (
 			<div>
 			  <h1>Instagram Feed</h1>
-			  <div className="pictures">{pictures}</div>
+			  <div className="pictures">
+			  	<div className="load-more" onClick={this.getData}>load more</div>
+			  		{pictures}
+			  	<div className="load-more" onClick={this.getData}>load more</div>
+			  </div> 
       </div>
 		);
 	}
