@@ -52,9 +52,9 @@ var Gallery = React.createClass({
 			<div>
 			  <h1>Instagram Feed</h1>
 			  <div className="pictures">
-			  	<div className="load-more" onClick={this.getData}>load more</div>
+			  	<div className="load-more" onClick={this.getData}>show more</div>
 			  		{pictures}
-			  	<div className="load-more" onClick={this.getData}>load more</div>
+			  	<div className="load-more" onClick={this.getData}>show more</div>
 			  </div> 
       </div>
 		);
